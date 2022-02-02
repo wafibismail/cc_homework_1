@@ -46,12 +46,10 @@ class Block {
 		this.discardSelf();
 	}
 
-	public Block locateAndGetMainBlock() {
+	public Block searchBothSidesAndGetMainBlock() {
 		Block assumedMainBlock = this;
 		if (this.hasPreviousAdjacentBlock()) {
-			while (assumedMainBlock.hasPreviousAdjacentBlock()) {
-				assumedMainBlock = assumedMainBlock.getPreviousAdjacentBlock();
-			}
+			assumedMainBlock = this.previousAdjacentBlock.searchBackwardAndGetMainBlock();
 		}
 		else if (this.hasNextAdjacentBlock()) {
 			assumedMainBlock = this.nextAdjacentBlock;
@@ -72,7 +70,7 @@ class Block {
 	private int getBackwardSizeOfColorCluster() {
 		int count = 0;
 
-		if (this.hasPreviousAdjacentBlock() && this.getPreviousAdjacentBlock().hasMatchingColorWith(this)) {
+		if (this.hasMatchingColoredPreviousAdjacentBlock()) {
 			count = this.getPreviousAdjacentBlock().getBackwardSizeOfColorCluster() + 1;
 		}
 
@@ -82,7 +80,7 @@ class Block {
 	private int getForwardSizeOfColorCluster() {
 		int count = 0;
 
-		if (this.hasNextAdjacentBlock() && this.getNextAdjacentBlock().hasMatchingColorWith(this)) {
+		if (this.hasMatchingColoredNextAdjacentBlock()) {
 			count = this.getNextAdjacentBlock().getForwardSizeOfColorCluster() + 1;
 		}
 
@@ -110,12 +108,12 @@ class Block {
 		}
 	}
 
-	private void setPreviousAdjacentBlock(Block blockToSetInPreviousPosition) {
-		this.previousAdjacentBlock = blockToSetInPreviousPosition;
-	}
-
-	private void setNextAdjacentBlock(Block blockToSetInNextPosition) {
-		this.nextAdjacentBlock = blockToSetInNextPosition;
+	private Block searchBackwardAndGetMainBlock() {
+		Block assumedMainBlock = this;
+		if (this.hasPreviousAdjacentBlock()) {
+			assumedMainBlock = this.previousAdjacentBlock.searchBackwardAndGetMainBlock();
+		}
+		return assumedMainBlock;
 	}
 
 	private void takePreviousAdjacentConnectionFrom(Block blockToTakeConnectionFrom) {
@@ -168,6 +166,14 @@ class Block {
 	
 	private void setRandomColor() {
         this.color = colorFactory.getRandomColor();
+	}
+
+	private void setPreviousAdjacentBlock(Block blockToSetInPreviousPosition) {
+		this.previousAdjacentBlock = blockToSetInPreviousPosition;
+	}
+
+	private void setNextAdjacentBlock(Block blockToSetInNextPosition) {
+		this.nextAdjacentBlock = blockToSetInNextPosition;
 	}
 }
 
