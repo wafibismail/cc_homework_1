@@ -17,10 +17,10 @@ However, if no block is demolished, another extra block with a random color will
 The challenge comes from the shape of the line-up. Because it is not a straight line, not all blocks are accessible from the start i.e. not all can be selected to be replaced or to represent valid spots of insertion.
 
 ## Changes summary
-- Renamed variables, arguments, and functions to better represent what they actually are.
+- Renamed variables, arguments, and functions to more clearly describe what they actually represent/do.
 - Broke down large functions into smaller functions, so that
-  - each only do one thing and do exactly what their names describe
-  - each represent only one level of abstraction.
+  - each only do one thing on one thing (e.g. modify one attribute, access one attribute) exactly as their names describe
+  - each represent only one level of abstraction, and are rearranged in accordance to said level
 - Created a small class, ColorFactory,
   - to replace the class variable char colorChoices[] = {'Y', 'R', 'G'}, and
   - to contain methods related to generating a new random color
