@@ -12,7 +12,7 @@ class Block {
 
 	public Block(Block blockToBeAssignedAsPreviousAdjacent) {
 		this.setRandomColor();
-		this.connectPreviousAdjacentBlock(blockToBeAssignedAsPreviousAdjacent);;
+		this.connectPreviousAdjacentBlock(blockToBeAssignedAsPreviousAdjacent);
 		this.nextAdjacentBlock = null;
 	}
 
