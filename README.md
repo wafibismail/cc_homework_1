@@ -9,6 +9,7 @@ The game starts with a line-up 20 blocks with randomly generated colors.<br>
 The rule for demolition trigger is, with a new block of a randomly generated color, either:<br>
 - replace an existing block, or,
 - insert between two existing blocks
+<br>
 ...so that after its placement, if one or more of its adjacent blocks have the same color as it, they will be discarded from the existing line-up a.k.a. demolished.<br>
 <br>
 However, if no block is demolished, another extra block with a random color will be appended to the line-up.<br>
