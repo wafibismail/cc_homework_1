@@ -3,33 +3,22 @@
 ### Source code
 
 ```javascript
-function initializeAndReturnNewCanvasCtx(numberOfFillColumnSegments, numberOfGapColumnSebments, numberOfFillRowSegments, numberOfGapRowSegments) {
+function initializeAndReturnNewCanvasCtx(numberOfFillColumnSegments, numberOfGapColumnSegments, numberOfFillRowSegments, numberOfGapRowSegments) {
     canvas = document.createElement("canvas");
     canvas.classList.add("canvas","overlay-content");
     workspaceOverlay.appendChild(canvas);
     setMaximumCanvasDimensions(canvas);
     var fillWidth, gapWidth, fillHeight, gapHeight;
-    setGapAndFillDimensions(fillWidth, gapWidth, fillHeight, gapHeight, numberOfFillColumnSegments, numberOfGapColumnSebments, numberOfFillRowSegments, numberOfGapRowSegments);
+    setGapAndFillDimensions(fillWidth, gapWidth, fillHeight, gapHeight, numberOfFillColumnSegments, numberOfGapColumnSegments, numberOfFillRowSegments, numberOfGapRowSegments);
+    
     ctx = initializeAndReturnCanvasContext(fillWidth, gapWidth, fillHeight, gapHeight);
     return ctx
 }
 function setGapAndFillDimensins(fillWidth, gapWidth, fillHeight, gapHeight) {
     fillWidth = 1 / numberOfFillColumnSegments * (horizontalFillToGapRatio) * canvas.width;
-    gapWidth = 1 / numberOfGapColumnSebments * (1 - horizontalFillToGapRatio) * canvas.width;
+    gapWidth = 1 / numberOfGapColumnSegments * (1 - horizontalFillToGapRatio) * canvas.width;
     fillHeight = 1 / numberOfFillRowSegments * (verticalFillToGapRatio) * canvas.height;
     gapHeight = 1 / numberOfGapRowSegments * (1- verticalFillToGapRatio) * canvas.height;
-}
-function rescaleGapAndFillDimensins(fillWidth, gapWidth, fillHeight, gapHeight) {
-    if (isGapWiderThanTall()) {
-        gapWidth = gapHeight;
-        horizontalFillToGapRatio = 1 - (gapWidth * (DAYS_PER_WEEK + canvasBorderOffset) / canvas.width);
-        fillWidth = 1 / DAYS_PER_WEEK * (horizontalFillToGapRatio) * canvas.width;
-    }
-    else {
-        gapHeight = gapWidth;
-        verticalFillToGapRatio = 1 - (gapHeight * (WEEKS_PER_MONTH + canvasBorderOffset + monthTextOffset + weekdayTextGapOffset) / canvas.height);
-        fillHeight = 1 / (WEEKS_PER_MONTH + monthTextOffset + weekdayTextGapOffset) * (verticalFillToGapRatio) * canvas.height;
-    } 
 }
 function setMaximumCanvasDimensions(canvas) {
     canvas.width = Math.min(
@@ -44,7 +33,7 @@ function setMaximumCanvasDimensions(canvas) {
 }
 function createNewCalendar() {
     var numberOfFillColumnSegments = DAYS_PER_WEEK;
-    var numberOfGapColumnSebments = (DAYS_PER_WEEK + canvasBorderOffset);
+    var numberOfGapColumnSegments = (DAYS_PER_WEEK + canvasBorderOffset);
     var numberOfFillRowSegments = (
         WEEKS_PER_MONTH
         + monthTextOffset
@@ -56,7 +45,7 @@ function createNewCalendar() {
         + monthTextOffset 
         + weekdayTextGapOffset
         );
-    var ctx = initializeAndReturnNewCanvasCtx(numberOfFillColumnSegments, numberOfGapColumnSebments,
+    var ctx = initializeAndReturnNewCanvasCtx(numberOfFillColumnSegments, numberOfGapColumnSegments,
     numberOfFillRowSegments, numberOfGapRowSegments);
     var pencil = initializeAndGetNewPencilStartingPoint();
     drawCalendarWith(ctx);

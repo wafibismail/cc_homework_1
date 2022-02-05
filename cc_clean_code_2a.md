@@ -9,19 +9,19 @@ Note:
 - Functions such as setGapAndFillDimensions() are not really applicable in this case since the variables passed as argument to it are not modified. This is just to demonstrate a further problem of too many arguments.
 
 ```javascript
-function initializeAndReturnNewCanvasCtx(numberOfFillColumnSegments, numberOfGapColumnSebments, numberOfFillRowSegments, numberOfGapRowSegments) {
+function initializeAndReturnNewCanvasCtx(numberOfFillColumnSegments, numberOfGapColumnSegments, numberOfFillRowSegments, numberOfGapRowSegments) {
     canvas = document.createElement("canvas");
     canvas.classList.add("canvas","overlay-content");
     workspaceOverlay.appendChild(canvas);
     setMaximumCanvasDimensions(canvas);
     var fillWidth, gapWidth, fillHeight, gapHeight;
-    setGapAndFillDimensions(fillWidth, gapWidth, fillHeight, gapHeight, numberOfFillColumnSegments, numberOfGapColumnSebments, numberOfFillRowSegments, numberOfGapRowSegments);
+    setGapAndFillDimensions(fillWidth, gapWidth, fillHeight, gapHeight, numberOfFillColumnSegments, numberOfGapColumnSegments, numberOfFillRowSegments, numberOfGapRowSegments);
     ctx = initializeAndReturnCanvasContext(fillWidth, gapWidth, fillHeight, gapHeight);
     return ctx
 }
-function setGapAndFillDimensions(fillWidth, gapWidth, fillHeight, gapHeight, numberOfFillColumnSegments, numberOfGapColumnSebments, numberOfFillRowSegments, numberOfGapRowSegments) {
+function setGapAndFillDimensions(fillWidth, gapWidth, fillHeight, gapHeight, numberOfFillColumnSegments, numberOfGapColumnSegments, numberOfFillRowSegments, numberOfGapRowSegments) {
     fillWidth = 1 / numberOfFillColumnSegments * (horizontalFillToGapRatio) * canvas.width;
-    gapWidth = 1 / numberOfGapColumnSebments * (1 - horizontalFillToGapRatio) * canvas.width;
+    gapWidth = 1 / numberOfGapColumnSegments * (1 - horizontalFillToGapRatio) * canvas.width;
     fillHeight = 1 / numberOfFillRowSegments * (verticalFillToGapRatio) * canvas.height;
     gapHeight = 1 / numberOfGapRowSegments * (1- verticalFillToGapRatio) * canvas.height;
 }
@@ -50,7 +50,7 @@ function setMaximumCanvasDimensions(canvas) {
 }
 function createNewCalendar() {
     var numberOfFillColumnSegments = DAYS_PER_WEEK;
-    var numberOfGapColumnSebments = (DAYS_PER_WEEK + canvasBorderOffset);
+    var numberOfGapColumnSegments = (DAYS_PER_WEEK + canvasBorderOffset);
     var numberOfFillRowSegments = (
         WEEKS_PER_MONTH
         + monthTextOffset
@@ -62,7 +62,7 @@ function createNewCalendar() {
         + monthTextOffset 
         + weekdayTextGapOffset
         );
-    var ctx = initializeAndReturnNewCanvasCtx(numberOfFillColumnSegments, numberOfGapColumnSebments,
+    var ctx = initializeAndReturnNewCanvasCtx(numberOfFillColumnSegments, numberOfGapColumnSegments,
     numberOfFillRowSegments, numberOfGapRowSegments);
     var pencil = initializeAndGetNewPencilStartingPoint();
     drawCalendarWith(ctx);

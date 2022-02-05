@@ -2,72 +2,76 @@
 
 Applied recommendations include:
 - Arguments are input arguments
-- One input argument at most. Implement argument object where appropriate
+- One input argument at most. If not then two at most. Implement argument object where appropriate
 - Arrange code from most abstract to least abstract, top to down
 
 
 To be fixed:
 ```javascript
-function initializeAndReturnNewCanvasCtx(numberOfFillColumnSegments, numberOfGapColumnSebments, numberOfFillRowSegments, numberOfGapRowSegments) {
+function createNewCalendar() {
+    var segmentationInfo = {
+        numberOfFillColumnSegments : DAYS_PER_WEEK,
+        numberOfGapColumnSegments : (DAYS_PER_WEEK
+                                    + canvasBorderOffset),
+        numberOfFillRowSegments : (WEEKS_PER_MONTH
+                                    + monthTextOffset
+                                    + weekdayTextFillOffset),
+        numberOfGapRowSegments : (WEEKS_PER_MONTH
+                                    + canvasBorderOffset 
+                                    + monthTextOffset 
+                                    + weekdayTextGapOffset
+        )
+    };
+    var ctx = initializeAndReturnNewCanvasCtx(segmentationInfo);
+    var pencil = initializeAndGetNewPencilStartingPoint();
+    drawCalendarWith(ctx,pencil);
+}
+function initializeAndReturnNewCanvasCtx(segmentationInfo) {
     canvas = document.createElement("canvas");
     canvas.classList.add("canvas","overlay-content");
     workspaceOverlay.appendChild(canvas);
-    setMaximumCanvasDimensions(canvas);
-    var fillWidth, gapWidth, fillHeight, gapHeight;
-    setGapAndFillDimensions(fillWidth, gapWidth, fillHeight, gapHeight, numberOfFillColumnSegments, numberOfGapColumnSebments, numberOfFillRowSegments, numberOfGapRowSegments);
-    ctx = initializeAndReturnCanvasContext(fillWidth, gapWidth, fillHeight, gapHeight);
+    var canvasDimensions = getMaximumCanvasDimensions();
+    canvas.width = carnvasDimensions.width;
+    canvas.height = canvasDimensions.height;
+    var segmentationDimensions = getSegmentationDimensionsBasedOn(segmentationInfo);
+    var contextCreationArguments = {
+        canvas: canvas,
+        segmentatinDimensions: segmentationDimensions
+        };
+    ctx = initializeAndReturnContext(contextCreationArguments);
     return ctx
 }
-function setGapAndFillDimensins(fillWidth, gapWidth, fillHeight, gapHeight) {
-    fillWidth = 1 / numberOfFillColumnSegments * (horizontalFillToGapRatio) * canvas.width;
-    gapWidth = 1 / numberOfGapColumnSebments * (1 - horizontalFillToGapRatio) * canvas.width;
-    fillHeight = 1 / numberOfFillRowSegments * (verticalFillToGapRatio) * canvas.height;
-    gapHeight = 1 / numberOfGapRowSegments * (1- verticalFillToGapRatio) * canvas.height;
+function initializeAndGetNewPencilStartingPoint(gapWidth){
+    var pencilBorderOffset = bordersImplemented ? gapWidth : 0;
+    var pencilX = 0 + pencilBorderOffset;
+    var pencilY = 0 + pencilBorderOffset;
+    return {pencilX, pencilY};
 }
-function rescaleGapAndFillDimensins(fillWidth, gapWidth, fillHeight, gapHeight) {
-    if (isGapWiderThanTall()) {
-        gapWidth = gapHeight;
-        horizontalFillToGapRatio = 1 - (gapWidth * (DAYS_PER_WEEK + canvasBorderOffset) / canvas.width);
-        fillWidth = 1 / DAYS_PER_WEEK * (horizontalFillToGapRatio) * canvas.width;
-    }
-    else {
-        gapHeight = gapWidth;
-        verticalFillToGapRatio = 1 - (gapHeight * (WEEKS_PER_MONTH + canvasBorderOffset + monthTextOffset + weekdayTextGapOffset) / canvas.height);
-        fillHeight = 1 / (WEEKS_PER_MONTH + monthTextOffset + weekdayTextGapOffset) * (verticalFillToGapRatio) * canvas.height;
-    } 
+function setMaximumCanvasDimensions() {
+    return {
+        width : Math.min(
+            maxCalendarWidthPixel,
+            window.innerWidth * maxCalendarToWindowWidthRatio
+            ),
+        height : Math.min(
+            canvas.width * maxCalendarHeightToOwnWidthRatio,
+            window.innerHeight * maxCalendarToWindowWidthRatio
+            )
+    };
 }
-function setMaximumCanvasDimensions(canvas) {
-    canvas.width = Math.min(
-        maxCalendarWidthPixel,
-        window.innerWidth * maxCalendarToWindowWidthRatio
-    );
+function getSegmentationDimensionsBasedOn(segmentationInfo) {
+    return {
+        fillWidth : 1 / segmentationInfo.numberOfFillColumnSegments * (horizontalFillToGapRatio) * canvas.width,
+        gapWidth : 1 / segmentationInfo.numberOfGapColumnSegments * (1 - horizontalFillToGapRatio) * canvas.width,
+        fillHeight : 1 / segmentationInfo.numberOfFillRowSegments * (verticalFillToGapRatio) * canvas.height,
+        gapHeight : 1 / segmentationInfo.numberOfGapRowSegments * (1- verticalFillToGapRatio) * canvas.height
+    };
+}
 
-    canvas.height = Math.min(
-        canvas.width * maxCalendarHeightToOwnWidthRatio,
-        window.innerHeight * maxCalendarToWindowWidthRatio
-    );
-}
-function createNewCalendar() {
-    var numberOfFillColumnSegments = DAYS_PER_WEEK;
-    var numberOfGapColumnSebments = (DAYS_PER_WEEK + canvasBorderOffset);
-    var numberOfFillRowSegments = (
-        WEEKS_PER_MONTH
-        + monthTextOffset
-        + weekdayTextFillOffset
-        );
-    var numberOfGapRowSegments = (
-        WEEKS_PER_MONTH
-        + canvasBorderOffset 
-        + monthTextOffset 
-        + weekdayTextGapOffset
-        );
-    var ctx = initializeAndReturnNewCanvasCtx(numberOfFillColumnSegments, numberOfGapColumnSebments,
-    numberOfFillRowSegments, numberOfGapRowSegments);
-    var pencil = initializeAndGetNewPencilStartingPoint();
-    drawCalendarWith(ctx);
-}
-function initializeCanvasContext(canvas) {
-    ctx = canvas.getContext("2d");
+function initializeAndReturnContext(contextCreationParameters) {
+    ctx = contextCreationArguments.canvas.getContext("2d");
+    var gapWidth = contextCreationArguments.gapWidth;
+    var gapHeight = contextCreationArguments.gapHeight;
     noShadowColor = ctx.shadowColor;
     ctx.shadowBlur = gapWidth/2;
     ctx.shadowOffsetX = gapWidth/2;
@@ -75,11 +79,5 @@ function initializeCanvasContext(canvas) {
     ctx.textBaseline = 'middle';
     ctx.textAlign = 'center';
     return ctx;
-}
-function initializeAndGetNewPencilStartingPoint(gapWidth){
-    var pencilBorderOffset = bordersImplemented ? gapWidth : 0;
-    var pencilX = 0 + pencilBorderOffset;
-    var pencilY = 0 + pencilBorderOffset;
-    return {pencilX, pencilY};
 }
 ```

@@ -21,7 +21,7 @@ function newCalendar() {
     );
     
     var numberOfFillColumnSegments = DAYS_PER_WEEK;
-    var numberOfGapColumnSebments = (DAYS_PER_WEEK + canvasBorderOffset);
+    var numberOfGapColumnSegments = (DAYS_PER_WEEK + canvasBorderOffset);
     var numberOfFillRowSegments = (
         WEEKS_PER_MONTH
         + monthTextOffset
@@ -34,7 +34,7 @@ function newCalendar() {
         + weekdayTextGapOffset
         );
     fillWidth = 1 / numberOfFillColumnSegments * (horizontalFillToGapRatio) * canvas.width;
-    gapWidth = 1 / numberOfGapColumnSebments * (1 - horizontalFillToGapRatio) * canvas.width;
+    gapWidth = 1 / numberOfGapColumnSegments * (1 - horizontalFillToGapRatio) * canvas.width;
     fillHeight = 1 / numberOfFillRowSegments * (verticalFillToGapRatio) * canvas.height;
     gapHeight = 1 / numberOfGapRowSegments * (1- verticalFillToGapRatio) * canvas.height;
 
