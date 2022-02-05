@@ -33,7 +33,7 @@ initialCanvas.classList.add("canvas","overlay-content");
 workspaceOverlay.appendChild(initialCanvas);
 ```
 
-# Part 1b - Better names, again.
+## Part 1b - Better names, again.
 
 Applied recommendation:
 - Unique "shapes" of names
