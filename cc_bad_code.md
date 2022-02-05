@@ -88,6 +88,6 @@ var removeWorkspaceCanvasesBtn = document.createElement("button");
 
 The names do represent what they are intended for. However, it requires careful reading. For a first time reader, one may get the wrong impression that removeWorkspaceCanvasesBtn has workspaceOverlay as its primary target of action (remove), especially since toggleWorkspaceVisibilityBtn, which has a similar shape, comes before it. In actuality, removeWorkspaceCanvasesBtn acts on the a specific selection of workspaceOverlay's children.
 
-#### Solution
+### Solution
 
 Solution can be found in the other file, cc_clean_code.md
