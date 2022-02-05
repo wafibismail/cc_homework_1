@@ -63,7 +63,7 @@ Fixed code segment is in the other file, cc_clean_code.md
 
 <br>
 
-## Part 1b - Another problem with names
+## Part 1b - More problems with names
 
 ### Source code
 
