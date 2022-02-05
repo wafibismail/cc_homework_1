@@ -1,6 +1,6 @@
 ## Part 1 - Intention-revealing names & pronouncable names
 
-```
+```javascript
 var workspaceOverlay = document.createElement("div");
 workspaceOverlay.className = "overlay";
 

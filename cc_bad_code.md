@@ -4,7 +4,7 @@ These variables' intended purposes can be guessed by looking at their overall co
 
 In addition to that, it is better for the names to be pronouncable, unlike "cbtn" and "rmbtn" which can be pronounced in different ways such as "see bee tee en", "cbutton", "kubten", "rumbten, "ar em bee tee en", etc.
 
-```
+```javascript
 var overlay = document.createElement("div");
 overlay.className = "overlay";
 
