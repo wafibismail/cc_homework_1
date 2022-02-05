@@ -20,9 +20,9 @@ rmbtn.className = "clearbtn";
 rmbtn.innerHTML = "&times";
 rmbtn.addEventListener("click", function() {
     div.style.display = "none";
-    var canvas = div.getElementsByClassName("canvas");
-    while (canvas.length > 0) {
-        div.removeChild(canvas[0]);
+    var canvasArray = div.getElementsByClassName("canvas");
+    while (canvasArray.length > 0) {
+        div.removeChild(canvasArray[0]);
     }
 })
 
@@ -43,7 +43,11 @@ In addition to that, it is better for the names to be pronounceable, unlike "cbt
 
 The variable "div", especially because it is in the global scope i.e. expected to be found in in many parts of the code, could turn out to be difficult to search due to it being an exact HTML tag as well. If one needs to search for where it is referenced, one may find themselves being directed to many code sections unrelated to this actual "div" variable.
 
-There is a similar issue with the variable "canvas" (local variable in rmbtn's onclick function), though to a lesser extent, since it is in a smaller scope. Not much need for searching as far as it is concerned.
+### Disinformation
+
+"var canvasArray" actually references an HTMLCollection object, not an Array. While in some ways it can be treated as an array i.e. has property "length" to be used to iterate thru elements in a for-loop by index, it has other possible functionalities not available to Arrays such as accessing elements by their HTML attribute "id".
+
+Naming the local variable just "canvases" in this case would even be better as that would be the minimum to do. Causing disinformation is worse than meeting minimum requirements.
 
 ### Lack of meaningful distinctions
 

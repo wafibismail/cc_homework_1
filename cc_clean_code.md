@@ -4,7 +4,8 @@ Applied recommendations include:
 - Intention-revealing names
 - Pronounceable names
 - Use searchable names
-- Make meaningful distinctions
+- Elimination of disinformation caused by misinforming names
+- Introduction of meaningful distinctions
 
 ```javascript
 var workspaceOverlay = document.createElement("div");
