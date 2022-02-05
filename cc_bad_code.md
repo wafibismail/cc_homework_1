@@ -45,9 +45,9 @@ The variable "div", especially because it is in the global scope i.e. expected t
 
 ### Disinformation
 
-"var canvasArray" actually references an HTMLCollection object, not an Array. While in some ways it can be treated as an array i.e. has property "length" to be used to iterate thru elements in a for-loop by index, it has other possible functionalities not available to Arrays such as accessing elements by their HTML attribute "id".
+"var canvasArray" actually references an HTMLCollection object, not an Array. While in some ways it can be treated as an Array i.e. has property "length" to be used to iterate thru elements in a for-loop by index, it has other possible functionalities not available to Arrays such as accessing elements by their HTML attribute "id".
 
-Naming the local variable just "canvases" in this case would even be better as that would be the minimum to do. Causing disinformation is worse than meeting minimum requirements.
+Naming the local variable just "canvases" in this case would even be better as that would be the minimum to do. Causing disinformation is worse than meeting minimum requirements with no added information.
 
 ### Lack of meaningful distinctions
 
@@ -55,11 +55,11 @@ Naming the local variable just "canvases" in this case would even be better as t
 
 It can be implied that more than one "canvas" elements exists by looking at rmbtn's onclick function and how the global variable "canvas1" is named.
 
-It is important then to provide more information in the name so it can be more easily identified in other portions of the overall code.
+It is important then to provide more information in the name e.g. naming it mainCanvas or initialCanvas, so it can be more easily identified in other portions of the overall code.
 
 #### Solution
 
-Solution found in the other file, cc_clean_code.md
+Fixed code segment is in the other file, cc_clean_code.md
 
 
 ## Part 1b - Another problem with names
@@ -89,4 +89,4 @@ The names do represent what they are intended for. However, it requires careful 
 
 #### Solution
 
-Solution found in the other file, cc_clean_code.md
+Solution can be found in the other file, cc_clean_code.md
