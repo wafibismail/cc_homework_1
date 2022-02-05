@@ -1,5 +1,11 @@
 ## Part 1 - Intention-revealing names & pronouncable names
 
+Applied recommendations include:
+- Intention-revealing names
+- Pronounceable names
+- Use searchable names
+- Make meaningful distinctions
+
 ```javascript
 var workspaceOverlay = document.createElement("div");
 workspaceOverlay.className = "overlay";
@@ -16,13 +22,13 @@ removeWorkspaceCanvasesBtn.className = "clearbtn";
 removeWorkspaceCanvasesBtn.innerHTML = "&times";
 removeWorkspaceCanvasesBtn.addEventListener("click", function() {
     workspaceOverlay.style.display = "none";
-    var possibleCanvases = workspaceOverlay.getElementsByClassName("canvas");
-    while (possibleCanvases.length > 0) {
-        workspaceOverlay.removeChild(possibleCanvases[0]);
+    var workCanvases = workspaceOverlay.getElementsByClassName("canvas");
+    while (workCanvases.length > 0) {
+        workspaceOverlay.removeChild(workCanvases[0]);
     }
 })
 
-var startingCanvas = document.createElement("canvas");
-startingCanvas.classList.add("canvas","overlay-content");
-workspaceOverlay.appendChild(startingCanvas);
+var initialCanvas = document.createElement("canvas");
+initialCanvas.classList.add("canvas","overlay-content");
+workspaceOverlay.appendChild(initialCanvas);
 ```
