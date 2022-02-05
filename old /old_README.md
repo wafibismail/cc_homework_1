@@ -1,3 +1,6 @@
+# Note
+This file is no longer relevant
+
 # Homework 1
 This assignment corresponds to chapter 2 (Names) and 3 (Functions) of the Clean Code textbook, applying concepts introduced in said chapters to an example code.
 
