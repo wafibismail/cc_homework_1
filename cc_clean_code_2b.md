@@ -5,8 +5,6 @@ Applied recommendations include:
 - One input argument at most. If not then two at most. Implement argument object where appropriate
 - Arrange code from most abstract to least abstract, top to down
 
-
-To be fixed:
 ```javascript
 function createNewCalendar() {
     var segmentationInfo = {
