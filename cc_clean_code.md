@@ -38,16 +38,15 @@ workspaceOverlay.appendChild(initialCanvas);
 
 Applied recommendation:
 - Unique "shapes" of names
+- Use verbs only in method names, and use names for variables instead
 
 ```javascript
 var workspaceOverlay = document.createElement("div");
 
 //A button to change workspaceOverlay's visibility
-var toggleWorkspaceVisibilityBtn = document.createElement("button");
+var workspaceVisibilityToggleBtn = document.createElement("button");
 
 //A button to remove all canvas elements from workspaceOverlay
 //Previously removeWorkspaceCanvasesBtn
-var removeWorkCanvasesBtn = document.createElement("button");
+var workspaceCanvasesRemovalBtn = document.createElement("button");
 ```
-
-Naming the last variable to removeWorkCanvasesBtn as demonstrated above would be sufficient, as it eliminates the reason that the two variables with different targets seemed similar (which could mistakenly imply similar functionality e.g. do something directly to workspaceOverlay itself) initially. The reason being the word "Workspace" and "Btn" in their names.

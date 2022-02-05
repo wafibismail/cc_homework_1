@@ -88,6 +88,12 @@ var removeWorkspaceCanvasesBtn = document.createElement("button");
 
 The names do represent what they are intended for. However, it requires careful reading. For a first time reader, one may get the wrong impression that removeWorkspaceCanvasesBtn has workspaceOverlay as its primary target of action (remove), especially since toggleWorkspaceVisibilityBtn, which has a similar shape, comes before it. In actuality, removeWorkspaceCanvasesBtn acts on the a specific selection of workspaceOverlay's children.
 
+### Nouns for variable names! Verbs are for methods.
+
+And variable names should be nouns. While toggleWorkspaceVisibilityBtn and removeWorkspaceCanvasesBtn are valid nouns wholly, a reader may at first mistake them for verbs as the verbs come in the first place i.e. it's like they were methods to "toggle" something, and "remove" something.
+
+They could be renamed more properly to "workspaceVisibilityToggleBtn" and "workspaceCanvasesRemovalBtn".
+
 ### Solution
 
 Solution can be found in the other file, cc_clean_code.md
