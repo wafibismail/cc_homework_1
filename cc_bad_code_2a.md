@@ -1,4 +1,3 @@
-
 ## Part 2a - Some problems with functions
 
 ### Source code
@@ -64,10 +63,15 @@ function newCalendar() {
 }
 ```
 
-### Problems.
+### Problems:
 - Method names should be verbs.
 createNewCalendar() would be a more appropriate label in this case.
 - Too many levels of abstractions in just one function.
 Functions should contain one level abstraction of code. In this case, createNewCalendar() should only contain functions that tell the reader immediately how the new calendar is created, which is to perpareNewCanvas() and drawCalendar()
 - There are "side effects" to running this code.
 In this case, the variables fillWidth, fillHeight, gapWidth, gapHeight, pencilBorderOffset, pencilX, pencilY, monthBoxWidth, and ctx which are all global variables (not declared inside the function), are changed. This would if the, right circumstances meet, cause unexpected behaviour as changes may not be expected.
+
+
+### Further Problems
+
+More problems are covered in the next file, cc_bad_code_2b.md

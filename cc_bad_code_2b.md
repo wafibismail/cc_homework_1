@@ -1,12 +1,6 @@
-## Part 2a - Some problems with functions
+## Part 2b - More problems related to functions
 
-Applied recommendations include:
-- Assigning verbs as method names
-- Reducing the levels of abstractions to be least possible in the function(s)
-- Eliminating "side effects" by initializing local variables to be used instead of changing global variables.
-
-Note:
-- Functions such as setGapAndFillDimensions() are not really applicable in this case since the variables passed as argument to it are not modified. This is just to demonstrate a further problem of too many arguments.
+### Source code
 
 ```javascript
 function initializeAndReturnNewCanvasCtx(numberOfFillColumnSegments, numberOfGapColumnSebments, numberOfFillRowSegments, numberOfGapRowSegments) {
@@ -19,7 +13,7 @@ function initializeAndReturnNewCanvasCtx(numberOfFillColumnSegments, numberOfGap
     ctx = initializeAndReturnCanvasContext(fillWidth, gapWidth, fillHeight, gapHeight);
     return ctx
 }
-function setGapAndFillDimensions(fillWidth, gapWidth, fillHeight, gapHeight, numberOfFillColumnSegments, numberOfGapColumnSebments, numberOfFillRowSegments, numberOfGapRowSegments) {
+function setGapAndFillDimensins(fillWidth, gapWidth, fillHeight, gapHeight) {
     fillWidth = 1 / numberOfFillColumnSegments * (horizontalFillToGapRatio) * canvas.width;
     gapWidth = 1 / numberOfGapColumnSebments * (1 - horizontalFillToGapRatio) * canvas.width;
     fillHeight = 1 / numberOfFillRowSegments * (verticalFillToGapRatio) * canvas.height;
@@ -83,5 +77,9 @@ function initializeAndGetNewPencilStartingPoint(gapWidth){
     var pencilY = 0 + pencilBorderOffset;
     return {pencilX, pencilY};
 }
-
 ```
+
+### Problems:
+- Some of the functions' arguments are not input arguments. The values such as setGapAndFillDimensions(fillWidth, gapWidth, fillHeight, gapHeight, numberOfFillColumnSegments, numberOfGapColumnSegments, numberOfFillRowSegments, numberOfGapRowSegments) that is actually meant to assign values to the variables fillWidth, gapWidth, fillHeight, gapHeight.
+- In addition, the above function has way too many arguments. The actual required arguments are the numberOf**Segments variables, which as they can be considered as one concept can just be passed in the form of one object.
+- Code not arranged properly top to down by levels of abstraction
