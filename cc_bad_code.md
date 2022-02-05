@@ -57,9 +57,7 @@ It can be implied that more than one "canvas" elements exists by looking at rmbt
 
 It is important then to provide more information in the name e.g. naming it mainCanvas or initialCanvas, so it can be more easily identified in other portions of the overall code.
 
-<br>
-
-#### Solution
+### Solution
 
 Fixed code segment is in the other file, cc_clean_code.md
 
