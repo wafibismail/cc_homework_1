@@ -49,4 +49,4 @@ var toggleWorkspaceVisibilityBtn = document.createElement("button");
 var removeWorkCanvasesBtn = document.createElement("button");
 ```
 
-Naming the last variable to removeWorkCanvasesBtn as demonstrated above would be sufficient, as it eliminates the reason that the two variables with different targets seemed similar (which could mistakenly imply similar functionality e.g. do something directly to workspaceOverlay itself) initially. The reason being the word "Workspace" in their names.
+Naming the last variable to removeWorkCanvasesBtn as demonstrated above would be sufficient, as it eliminates the reason that the two variables with different targets seemed similar (which could mistakenly imply similar functionality e.g. do something directly to workspaceOverlay itself) initially. The reason being the word "Workspace" and "Btn" in their names.
