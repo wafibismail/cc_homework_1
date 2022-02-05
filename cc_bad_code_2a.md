@@ -1,5 +1,5 @@
 
-## Part 2 - Some problems with functions
+## Part 2a - Some problems with functions
 
 ### Source code
 
@@ -50,14 +50,6 @@ function newCalendar() {
         fillHeight = 1 / (WEEKS_PER_MONTH + monthTextOffset + weekdayTextGapOffset) * (verticalFillToGapRatio) * canvas.height;
     }    
 
-    if (monthSwitchIsImplemented) {
-    var reference = Math.min(fillHeight, fillWidth);
-    monthSwitchWidth = reference * monthSwitchWidthToFillWidthRatio;
-    monthSwitchHypotaneous = monthSwitchWidth/(Math.sin(Math.PI/2 - Math.atan((fillHeight-monthSwitchWidth)/fillWidth)));
-    };
-
-    monthBoxWidth = (fillWidth + gapWidth) * (DAYS_PER_WEEK - (2 * monthSwitchOffset)) - gapWidth;
-
     pencilBorderOffset = bordersImplemented ? gapWidth : 0;
     pencilX = 0 + pencilBorderOffset;
     pencilY = 0 + pencilBorderOffset
@@ -73,9 +65,9 @@ function newCalendar() {
 ```
 
 ### Problems.
-- Method names should be verds.
+- Method names should be verbs.
 createNewCalendar() would be a more appropriate label in this case.
-- It is way too big.
-Functions should contain one level abstraction of code. In this case, createNewCalendar() should only function that tells how exactly the new calendar is created, which is to perpareNewCanvas() and drawCalendar()
+- Too many levels of abstractions in just one function.
+Functions should contain one level abstraction of code. In this case, createNewCalendar() should only contain functions that tell the reader immediately how the new calendar is created, which is to perpareNewCanvas() and drawCalendar()
 - There are "side effects" to running this code.
-In this case, the variables fillWidth, fillHeight, gapWidth, gapHeight, monthSwitchWidth, monthSwitchHypotaneous, pencilBorderOffset, pencilX, pencilY, monthBoxWidth, and ctx which are all global variables (not declared inside the function), are changed. This would if the, right circumstances meet, cause unexpected behaviour as changes may not be expected.
+In this case, the variables fillWidth, fillHeight, gapWidth, gapHeight, pencilBorderOffset, pencilX, pencilY, monthBoxWidth, and ctx which are all global variables (not declared inside the function), are changed. This would if the, right circumstances meet, cause unexpected behaviour as changes may not be expected.
