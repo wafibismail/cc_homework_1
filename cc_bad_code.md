@@ -61,6 +61,7 @@ It is important then to provide more information in the name e.g. naming it main
 
 Fixed code segment is in the other file, cc_clean_code.md
 
+<br>
 
 ## Part 1b - Another problem with names
 
