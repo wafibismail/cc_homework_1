@@ -1,4 +1,4 @@
-## Part 1 - Intention-revealing names & pronouncable names
+## Part 1 - Better Names
 
 Applied recommendations include:
 - Intention-revealing names
@@ -32,3 +32,21 @@ var initialCanvas = document.createElement("canvas");
 initialCanvas.classList.add("canvas","overlay-content");
 workspaceOverlay.appendChild(initialCanvas);
 ```
+
+# Part 1b - Better names, again.
+
+Applied recommendation:
+- Unique "shapes" of names
+
+```javascript
+var workspaceOverlay = document.createElement("div");
+
+//A button to change workspaceOverlay's visibility
+var toggleWorkspaceVisibilityBtn = document.createElement("button");
+
+//A button to remove all canvas elements from workspaceOverlay
+//Previously removeWorkspaceCanvasesBtn
+var removeWorkCanvasesBtn = document.createElement("button");
+```
+
+Naming the last variable to removeWorkCanvasesBtn as demonstrated above would be sufficient, as it eliminates the reason that the two variables with different targets seemed similar (which could mistakenly imply similar functionality e.g. do something directly to workspaceOverlay) initially. The reason being the word "Workspace" in their names.
