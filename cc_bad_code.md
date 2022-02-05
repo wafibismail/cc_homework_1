@@ -2,7 +2,7 @@
 
 These variables' intended purposes can be guessed by looking at their overall codes. However those could be more easily be represented by more carefully chosen names as demonstrated in cc_clean_code.md
 
-In addition to that, it is better for the names to be pronouncable, unlike "cbtn" and "rmbtn" which can be pronounced in different ways such as "see bee tee en", "cbutton", "kubten", "rumbten, "ar em bee tee en", etc.
+In addition to that, it is better for the names to be pronouncable, unlike "cbtn" and "rmbtn" which not only requires more mental effort to remember and conceptualize compared to natural-language whole words, but may also cause difficulty in communication as they can be pronounced in different ways such as "see bee tee en", "cbutton", "kubten", "rumbten, "ar em bee tee en", etc.
 
 ```javascript
 var overlay = document.createElement("div");
